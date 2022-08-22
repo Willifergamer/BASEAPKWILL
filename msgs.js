@@ -1,12 +1,69 @@
-module.exports = configMsg = async (conn, body, reply, from) => {
+const fs = require ('fs')
+const { prefix } = JSON.parse(fs.readFileSync('./dono/settings.json'))
 
-switch(body.toLowerCase()){
+
+module.exports = configMsg = async (conn, chats, reply, from, msg) => {
+
+switch(chats.toLowerCase()){
 case "1":
-reply("Desde já agradecemos pelo contato! Você está prestes a usufruir dos serviços da maior plataforma de streaming da América Latina! \n\nCom todos os canais disponíveis em território brasileiro, português, americano, africano e asiático\n\nCerca de 8000 filmes, \n\n2260 series completas. \n\nTudo isso por apenas R$25,00 mensais🤗🤗\n\nPara você conhecer melhor o nosso serviço, gostaríamos de lhe proporcionar um teste gratuito e sem compromisso por 3h.\n\nVocê tem disponibilidade para testar agora?\nDigite\n(A) para sim\n(B) para não")
-case "3":reply("Ótimo. \nPor favor me informe a marca do seu televisor smart \nE aguarde um instante, a nossa equipe técnica já irá lhe atender! 😉") 
+texto = `Desde já agradecemos pelo contato! Você está prestes a usufruir dos serviços da maior plataforma de streaming da América Latina!
+
+Com todos os canais disponíveis em território brasileiro, português, americano, africano e asiático
+
+Cerca de 8000 filmes, 
+
+2260 series completas. 
+
+Tudo isso por apenas R$25,00 mensais🤗🤗
+
+Para você conhecer melhor o nosso serviço, gostaríamos de lhe proporcionar um teste gratuito e sem compromisso por 3h.
+
+Você tem disponibilidade para testar agora?
+Digite
+(A) para sim
+(B) para não`
+conn.sendBT(from, texto, 
+"",[{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
+{index: 2, quickReplyButton: {displayText: 'SIM', id: `a`}},    
+{index: 2, quickReplyButton: {displayText: 'NÃO', id: `b`}}
+])
+case "3":
+reply("Ótimo. \nPor favor me informe a marca do seu televisor smart \nE aguarde um instante, a nossa equipe técnica já irá lhe atender! 😉") 
 break 
 case "a":
-reply("Excelente!👏👏👏\n\n Para usar o nosso serviço vc só precisa ter internet e um aparelho compatível. \nPor favor escolha uma das opções abaixo na qual você gostaria de testar gratuitamente pelas próximas 4h\nDigite\n(3) para TV SMART \n(4) para TV BOX \n(5) para COMPUTADOR WINDOWS\n(6) para CELULAR ANDROID\n(7) para CELULAR IOS (iPhone)")
+texto = `Excelente!👏👏👏
+
+Para usar o nosso serviço vc só precisa ter internet e um aparelho compatível.
+Por favor escolha uma das opções abaixo na qual você gostaria de testar gratuitamente pelas próximas 4h
+Digite
+(3) para TV SMART 
+(4) para TV BOX`
+conn.sendBT(from, texto, 
+"",[
+{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
+{index: 2, quickReplyButton: {displayText: 'TV SMART', id: `3`}},    
+{index: 2, quickReplyButton: {displayText: 'TV BOX', id: `4`}},  
+{index: 2, quickReplyButton: {displayText: 'Não está aqui', id: `a2s`}},  
+
+])
+break 
+case "a2s":
+texto = `Excelente!👏👏👏
+
+Para usar o nosso serviço vc só precisa ter internet e um aparelho compatível.
+Por favor escolha uma das opções abaixo na qual você gostaria de testar gratuitamente pelas próximas 4h
+Digite
+(5) para COMPUTADOR WINDOWS
+(6) para CELULAR ANDROID
+(7) para CELULAR IOS (iPhone)`
+conn.sendBT(from, texto, 
+"",[
+{index: 1, urlButton: {displayText: 'CANAL TELEGRAM', url: 'https://t.me/batmonn'}},
+{index: 2, quickReplyButton: {displayText: 'WINDOWS', id: `5`}},    
+{index: 2, quickReplyButton: {displayText: 'ANDROID', id: `6`}},  
+{index: 2, quickReplyButton: {displayText: 'IOS', id: `7`}},  
+
+])
 break 
 case "b":
 reply("Que pena ! ☹☹\nMas não esquenta! Volte a nos chamar aqui quando tiver um tempinho!  Combinado ? \n\nTemos certeza que você vai amar todo conteúdo que iremos te apresentar ! 🤗🤗\n\nAguardamos o seu contato então , tá bem?\nAbraços e até já 🤝") 
@@ -60,7 +117,7 @@ reply("Aperte *menu* no controle\nVa ate opcao *Rede*\nEntre em *Status da Rede*
 break
 
 case "android":
-reply("Ótimo! \nAcesse o mediafire aí no aparelho por favor e instale o app willifer net👇👇👇\n\nhttps://www.mediafire.com/file/6nw89slapftsqfa/WL_NET_MOVEL.apk/file")
+reply("Ótimo! \nAcesse a playstore aí no aparelho por favor e instale o app MINERD PLAYER👇👇👇\n\nhttps://play.google.com/store/apps/details?id=com.customized.batmonn")
 break
 
 case "iphone":
@@ -72,7 +129,7 @@ reply("Ótimo.\nPor favor instale o app IPTV SMARTERS na app store")
 break 
 
 case "pix":
-reply("1 PIX 24992789390\n\nObrigado desde já")
+reply("1 PIX minerd@minerdso.com.br\n\nObrigado desde já")
 break 
 
 case "nada ainda":
@@ -82,10 +139,124 @@ Estamos verificando.
 Aguarde por favor`)
 break
 
+case "110":
+reply(`MATERIAL DE APOIO MINERD TV
 
+CANAL COM TUTORIAIS
+\nT.me/minerdtv\n
+
+URL PARA XCIPTV\n
+http://minerdnet.xyz:80
+
+\nURL SMARTERS TV
+http://minerdkatu.xyz\n
+
+STB V3 
+177.54.144.41
+\n
+
+PLAYSTORE IPTV
+\n
+Minerd player  (XCIPTV)
+https://play.google.com/store/apps/details?id=com.customized.batmonn
+
+CINETOP PLAY  (MODELO LXTREAM)
+https://play.google.com/store/apps/details?id=com.itreanplay.nw
+\n
+EPG : http://epgpainel.ddns.net/epg.xml
+\n
+WEBPLAY
+Http://w1.minerdso.com.br
+\n 
+http://wp4.me
+\nPara Computador 
+MEGA CUBO 👇
+http://app.minerdso.com.br/TV/megacubo_setup.exe
+\nSMARTERS PLAYER 👇
+https://apk2.appsonwindows.com/4103001/91/
+Vídeos
+\nCOMO FAZER O CHATBOT 
+https://youtu.be/xbaefsxcLnk
+COMO USAR O PAINEL
+\n
+http://www.youtube.com/watch?v=DLXioII381s
+\nCOMO USAR IPTV NO PC
+https://youtu.be/Fqd81vF4zag
+OTT
+\n XCIPTV NO MINERD+
+\nhttps://youtu.be/dg0JRNJO2PY
+Xtream no Minerd+
+https://youtu.be/bv-cWxrUywQ
+\n 
+SMARTERS PLAYER NO MINERD+
+https://youtu.be/jVo5xaifpZI
+\n 
+✅Minerd 📺 aqui Ocê num fica sem ver 👀`)
+break
+
+
+case "aula":
+reply(`*ERRO - ALTERE O PROTOCOLO DE APN + ERRO DE NAO APARECER CHAVE VPN QUANDO CONECTADO.*
+https://youtu.be/4-f6Q2ExX4k\n
+*COMO IDENTIFICO PORQUE NÃO CONECTA?
+https://youtu.be/_C9L5Zwjbvs\n
+*CONHECENDO OS APLICATIVOS*
+https://youtu.be/DtYT2yxAf3Q\n
+*COMO USAR PAINEL SSH COMPLETO*
+https://www.youtube.com/watch?v=G_rPTNb3WnQ\n
+*COMO TROCAR O HOST DO V2RAY*
+https://youtu.be/9MH2ud7HV3w\n
+*COMO FUNCIONA HTTP INJECTOR*
+https://youtu.be/aedf2ITaHIc\n
+*COMO SE RECONECTAR A  INTERNET EXEMPLO HTTP INEJCTOR*
+https://youtu.be/-TtyoapnUy4\n
+*APK NAO INSTALA PELO WHATSAPP*
+https://www.youtube.com/shorts/B-PFfdYJ2EI\n`)
+break
+
+case "mamu":
+reply(` ↘️↘️↘️↘️↘️↘️↘️↘️↘️↘️↘️↘️↘️↘️
+POR UMA MIXARIA R$ 15.00 POR MES, MANTENHO SEU SERVIDOR CONECTANDO NAS OPERADORAS DO MOMENTO.\n
+✅O MODELO DO APP É CONECTA4G DO KIRITO.\n
+
+🗣VANTAGENS
+ 🎯NÃO PRECISA CORRER ATRAS DE PAYLOADS
+ 🎯NÃO PRECISA COMPRAR CONTA DO GOOGLE 25$\n\n
+
+🦣APP  MANUTE🐘
+https://play.google.com/store/apps/details?id=com.mamut.vps.vpn\n
+↘️↘️↘️↘️↘️↘️↘️↘️↘️↘️↘️↘️↘️↘️`)
+break
+
+case "servico":
+reply(` 
+🌍 *COMBO PARA REVENDA DE INTERNET* \n\n
+
+🕹 VPS ( Capacidade de MAXIMA 🕹150  login)
+🕹 App mod Conecta4g do kirito ou App Mamute na playstore com seu servidor
+🕹 Painel Bot Telegram ou Web\n\n
+
+Garantia da vps e de 31 dias, nesse período suporte a mesma. 
+Não é curso que estou vendendo, favor não mexer no vps.\n\n
+
+🗣 PAGA R$ 80.00 PARA LHE SER ENTREGUE CONFIGURADO E TESTADO. 
+
+🗣 R$ 60.00 MENSAL PARA ATUALIZAÇÃO DE PAYLOADS E MANUTENÇÃO DO VPS
+
+SUPORTE FEITO APENAS NO GRUPO!!!!!!!`)
+break
+
+
+
+
+
+
+
+
+
+case "comandosadm":
 case "comandoadm":
-reply(`
-╭───────────────
+reply(`╭───────────────
 ╎
 ┝  ⎙ Menu De Administradores
 ╎
@@ -119,18 +290,22 @@ reply(`
 ╎⩺ /Antiimg 1 / 0
 ╎⩺ /Antiaudio 1 / 0
 ╎⩺ /Antivideo 1 / 0
-╎⩺ /Leveling 1 / 0  
-╎⩺ /Simih 1 / 0
-╎⩺ /Simih2 1 / 0
 ╎⩺ /Fotogp (Marca)
 ╎⩺ /Descgp (TXT)
 ╎⩺ /Nomegp (Nome)
 ╎⩺ /Criartabela (ESCREVA-ALGO)
 ╎⩺ /Tabelagp
 ╎
-╰─────────────╯
-`)
+╰─────────────╯`)
 break
 }
 
 }
+
+let file = require.resolve(__filename)
+    fs.watchFile(file, () => {
+	fs.unwatchFile(file)
+	console.log(`Update '${__filename}'`)
+	delete require.cache[file]
+	require(file)
+})
